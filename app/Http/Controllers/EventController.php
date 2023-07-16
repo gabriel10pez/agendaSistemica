@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -12,7 +13,7 @@ class EventController extends Controller
     public function index()
     {
         //
-        return view('layouts.events.events-index');
+        return view('events.events-index');
     }
 
     /**
@@ -26,7 +27,7 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Event $evento)
     {
         //
     }
@@ -34,7 +35,7 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Event $evento)
     {
         //
     }
@@ -42,7 +43,7 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Event $evento)
     {
         //
     }
@@ -50,7 +51,7 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Event $evento, string $id)
     {
         //
     }
