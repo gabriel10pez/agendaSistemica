@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger(column: 'user_id');
-            $table->string(column: 'start');
-            $table->string(column: 'end');
+            $table->dateTime(column: 'start');
+            $table->dateTime(column: 'end');
             $table->integer(column: 'status')->default(value: 0)->nullable();
             $table->integer(column: 'is_all_day')
                 ->default(value: 0)

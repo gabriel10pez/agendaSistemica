@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Evento;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 
@@ -18,6 +19,8 @@ class EventoController extends Controller
      */
     public function index()
     {
+        // $evento = Evento::all();
+        // return $evento;
         return view('evento.index');
     }
 
