@@ -41,12 +41,12 @@ class EventoController extends Controller
     {
         request()->validate(Evento::$rules);
 
-        DB::table('eventos')->insert([
-            'id_user' => auth()->user()->id,
+        DB::table('events')->insert([
+            'id_User' => auth()->user()->id,
             'title' => request()->input('title'),
-            'descripcion' => request()->input('descripcion'),
-            'start' => request()->input('start').' '.request()->input('startH'),
-            'end' => request()->input('end').' '.request()->input('endH')
+            'description' => request()->input('descripcion'),
+            'start' => request()->input('start') . ' ' . request()->input('startH'),
+            'end' => request()->input('end') . ' ' . request()->input('endH')
         ]);
     }
 
@@ -59,7 +59,7 @@ class EventoController extends Controller
     public function show(Evento $evento)
     {
         //$evento = Evento::all();
-        $evento = DB::table('eventos')->where('id_user','=', auth()->user()->id)->get();
+        $evento = DB::table('events')->where('id_user', '=', auth()->user()->id)->get();
         return response()->json($evento);
     }
 
@@ -72,11 +72,11 @@ class EventoController extends Controller
     public function edit($id)
     {
         $evento = Evento::find($id);
-        $evento->startF=Carbon::createFromFormat('Y-m-d H:i:s', $evento->start)->format('Y-m-d');
-        $evento->endF=Carbon::createFromFormat('Y-m-d H:i:s', $evento->end)->format('Y-m-d');
-        
-        $evento->startH=Carbon::createFromFormat('Y-m-d H:i:s', $evento->start)->format('H:i:s');
-        $evento->endH=Carbon::createFromFormat('Y-m-d H:i:s', $evento->end)->format('H:i:s');
+        $evento->startF = Carbon::createFromFormat('Y-m-d H:i:s', $evento->start)->format('Y-m-d');
+        $evento->endF = Carbon::createFromFormat('Y-m-d H:i:s', $evento->end)->format('Y-m-d');
+
+        $evento->startH = Carbon::createFromFormat('Y-m-d H:i:s', $evento->start)->format('H:i:s');
+        $evento->endH = Carbon::createFromFormat('Y-m-d H:i:s', $evento->end)->format('H:i:s');
         return response()->json($evento);
         //return $evento;
     }
@@ -92,15 +92,15 @@ class EventoController extends Controller
     {
         request()->validate(Evento::$rules);
 
-        DB::table('eventos')
+        DB::table('events')
             ->where('id', request()->id)
             ->update([
-            'id_user' => Auth::user()->id,
-            'title' => request()->input('title'),
-            'descripcion' => request()->input('descripcion'),
-            'start' => request()->input('start').' '.request()->input('startH'),
-            'end' => request()->input('end').' '.request()->input('endH')
-        ]);
+                'id_user' => Auth::user()->id,
+                'title' => request()->input('title'),
+                'descripcion' => request()->input('descripcion'),
+                'start' => request()->input('start') . ' ' . request()->input('startH'),
+                'end' => request()->input('end') . ' ' . request()->input('endH')
+            ]);
 
         return response()->json($evento);
     }
