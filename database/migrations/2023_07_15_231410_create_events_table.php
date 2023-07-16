@@ -35,7 +35,8 @@ return new class extends Migration
             $table->string('resolucion_evento');
             $table->string('costo_evento');
             
-            $table->foreign(columns:'user_id')->references(columns:'id')->on(table:'users');            
+            $table->foreign(columns:'user_id')->references(columns:'id')->on(table:'users');   
+            $table->foreignId('tipo_event_id')->nullable()->constrained('tipo_eventos')->onDelete('cascade');          
         });
     }
 
