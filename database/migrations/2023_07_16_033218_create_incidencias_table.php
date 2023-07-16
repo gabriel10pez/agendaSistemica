@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('incidencias', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo_incidencia');
+            $table->longText('descripcion');
+            $table->date('fecha_incidencia');
+            $table->string('foto_incidencia');
+         
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
