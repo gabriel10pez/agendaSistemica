@@ -6,7 +6,7 @@
 <head>
     <base href="../../">
     <meta charset="utf-8" />
-    <title>App CodigoRomano</title>
+    <title>App Agenda Sistémica</title>
     <meta name="description"
         content="Craft admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
     <meta name="keywords"
@@ -64,7 +64,7 @@
                         <!--end::Aside mobile toggle-->
                         <!--begin::Logo-->
                         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
-                            <a href="https://app.codigoromano.dev/evento">
+                            <a href="home">
                                 <img alt="Logo" src="assets/media/logos/logo-default.png" class="h-35px" />
                             </a>
                         </div>
@@ -84,14 +84,53 @@
                                     <!--begin::Menu-->
                                     <div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
                                         id="#kt_header_menu" data-kt-menu="true">
-                                        <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+
+                                        <a  href="{{route('home')}}" data-kt-menu-placement="bottom-start"
                                             class="menu-item here show menu-lg-down-accordion me-lg-1">
                                             <span class="menu-link py-3">
-                                                <span class="menu-title">Agenda Digital</span>
+                                                <span class="menu-title">Eventos</span>
                                                 <span class="menu-arrow d-lg-none"></span>
                                             </span>
-                                        </div>
+                                        </a>
+
+                                        <a  href="#" data-kt-menu-placement="bottom-start"
+                                            class="menu-item here show menu-lg-down-accordion me-lg-1">
+                                            <span class="menu-link py-3">
+                                                <span class="menu-title">Configuración de la cuenta</span>
+                                                <span class="menu-arrow d-lg-none"></span>
+                                            </span>
+                                        </a>
+                                        <a  href="#" data-kt-menu-placement="bottom-start"
+                                            class="menu-item here show menu-lg-down-accordion me-lg-1">
+                                            <span class="menu-link py-3">
+                                                <span class="menu-title">Incidencia</span>
+                                                <span class="menu-arrow d-lg-none"></span>
+                                            </span>
+                                        </a>
+                                        <a  href="#" data-kt-menu-placement="bottom-start"
+                                            class="menu-item here show menu-lg-down-accordion me-lg-1">
+                                            <span class="menu-link py-3">
+                                                <span class="menu-title">Control del Evento</span>
+                                                <span class="menu-arrow d-lg-none"></span>
+                                            </span>
+                                        </a>
+                                        <a  href="#" data-kt-menu-placement="bottom-start"
+                                            class="menu-item here show menu-lg-down-accordion me-lg-1">
+                                            <span class="menu-link py-3">
+                                                <span class="menu-title">Control del Evento</span>
+                                                <span class="menu-arrow d-lg-none"></span>
+                                            </span>
+                                        </a>
+                                        <a  href="#" data-kt-menu-placement="bottom-start"
+                                            class="menu-item here show menu-lg-down-accordion me-lg-1">
+                                            <span class="menu-link py-3">
+                                                <span class="menu-title">Reportes</span>
+                                                <span class="menu-arrow d-lg-none"></span>
+                                            </span>
+                                        </a>
+
                                     </div>
+                                    
                                     <!--end::Menu-->
                                 </div>
                                 <!--end::Menu wrapper-->
