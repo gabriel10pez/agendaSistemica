@@ -29,6 +29,12 @@ return new class extends Migration
                 ->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->date('fecha_evento');
+            $table->string('lugar_evento');
+            $table->string('resolucion_evento');
+            $table->string('costo_evento');
+            
             $table->foreign(columns:'user_id')->references(columns:'id')->on(table:'users');            
         });
     }
