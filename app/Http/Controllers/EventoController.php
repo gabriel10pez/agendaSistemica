@@ -42,7 +42,7 @@ class EventoController extends Controller
         request()->validate(Evento::$rules);
 
         DB::table('events')->insert([
-            'id_User' => auth()->user()->id,
+            'user_id' => auth()->user()->id,
             'title' => request()->input('title'),
             'description' => request()->input('descripcion'),
             'start' => request()->input('start') . ' ' . request()->input('startH'),
