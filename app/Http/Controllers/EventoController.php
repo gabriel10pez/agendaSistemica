@@ -59,7 +59,7 @@ class EventoController extends Controller
     public function show(Evento $evento)
     {
         //$evento = Evento::all();
-        $evento = DB::table('events')->where('id_user', '=', auth()->user()->id)->get();
+        $evento = DB::table('events')->where('user_id', '=', auth()->user()->id)->get();
         return response()->json($evento);
     }
 
@@ -95,9 +95,9 @@ class EventoController extends Controller
         DB::table('events')
             ->where('id', request()->id)
             ->update([
-                'id_user' => Auth::user()->id,
+                'user_id' => Auth::user()->id,
                 'title' => request()->input('title'),
-                'descripcion' => request()->input('descripcion'),
+                'description' => request()->input('descripcion'),
                 'start' => request()->input('start') . ' ' . request()->input('startH'),
                 'end' => request()->input('end') . ' ' . request()->input('endH')
             ]);
