@@ -22,15 +22,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-    
 });
+
+Route::get('/home', function () {
+    return view('home');
+});
+
 Route::resource('tiposusuarios', TipoUsuarioController::class);
-    Route::resource('incidencias', IncidenciaController::class);
-    Route::resource('asistentes', AsistenteController::class);
-    Route::resource('tiposeventos', TipoEventoController::class);
-    Route::resource('acta', ActaController::class);
-    Route::resource('memorandum', MemorandumController::class);
-    Route::resource('evento', EventController::class);
+Route::resource('incidencias', IncidenciaController::class);
+Route::resource('asistentes', AsistenteController::class);
+Route::resource('tiposeventos', TipoEventoController::class);
+Route::resource('acta', ActaController::class);
+Route::resource('memorandum', MemorandumController::class);
+Route::resource('evento', EventController::class);
 // rama populate
 //! pop rama
 //LordAndre
