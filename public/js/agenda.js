@@ -42,7 +42,7 @@
                     (respuesta)=>{
                         formulario.id.value=respuesta.data.id;
                         formulario.title.value=respuesta.data.title;
-                        formulario.descripcion.value=respuesta.data.descripcion;
+                        formulario.description.value=respuesta.data.description;
                         formulario.start.value=respuesta.data.startF;
                         formulario.end.value=respuesta.data.endF;
                         formulario.startH.value=respuesta.data.startH;

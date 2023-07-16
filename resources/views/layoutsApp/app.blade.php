@@ -65,7 +65,7 @@
                         <!--begin::Logo-->
                         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
                             <a href="home">
-                                <img alt="Logo" src="assets/media/logos/logo-default.png" class="h-35px" />
+                                <h1>Sistema Agenda</h1>
                             </a>
                         </div>
                         <!--end::Logo-->
@@ -266,11 +266,11 @@
                     <div
                         class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
                         <!--begin::Copyright-->
-                        <div class="text-dark order-2 order-md-1">
+                        {{-- <div class="text-dark order-2 order-md-1">
                             <span class="text-muted fw-bold me-1">2021</span>
                             <a href="https://app.codigoromano.dev/evento" target="_self"
                                 class="text-gray-800 text-hover-primary">https://app.codigoromano.dev</a>
-                        </div>
+                        </div> --}}
                         <!--end::Copyright-->
                     </div>
                     <!--end::Container-->

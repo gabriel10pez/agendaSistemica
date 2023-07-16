@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Evento;
+use App\Models\TipoEvento;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use DateTime;
@@ -47,9 +48,10 @@ class EventoController extends Controller
         DB::table('events')->insert([
             'user_id' => auth()->user()->id,
             'title' => request()->input('title'),
-            'description' => request()->input('descripcion'),
+            'description' => request()->input('description'),
             'start' => request()->input('start') . ' ' . request()->input('startH'),
-            'end' => request()->input('end') . ' ' . request()->input('endH')
+            'end' => request()->input('end') . ' ' . request()->input('endH'),
+            
         ]);
     }
 

@@ -24,40 +24,65 @@
                     {{ csrf_field() }}
                        <div class="form-group d-none">
                          <label for="id">ID</label>
-                         <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="">
+                         <input type="text" class="form-control" name="id">
                          <small id="helpId" class="form-text text-muted">&nbsp;</small>
                        </div>
                        <div class="form-group">
                          <label for="title">Título</label>
-                         <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="" required="required">
+                         <input type="text" class="form-control" name="title" id="title">
                          <small id="helpId" class="form-text text-muted">&nbsp;</small>
                        </div>
-                       <div class="form-group">
-                         <label for="descripcion">Descripción</label>
-                         <textarea class="form-control" name="descripcion" id="descripcion" rows="3"></textarea>
-                         <small id="helpId" class="form-text text-muted">&nbsp;</small>
-                       </div>
-                       <div class="row">
-                            <div class="form-group col-md-6">
-                                <input type="date" class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="">
-                                <small id="helpId" class="form-text text-muted">Fecha Inicio</small>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input type="time" class="form-control" name="startH" id="startH" aria-describedby="helpId" placeholder="">
-                                <small id="helpId" class="form-text text-muted">Hora Inicio</small>
-                            </div>
-                       </div>
-                       <div class="row">
-                            <div class="form-group col-md-6">
-                                <input type="date" class="form-control" name="end" id="end" aria-describedby="helpId" placeholder="">
-                                <small id="helpId" class="form-text text-muted">Fecha Fin</small>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input type="time" class="form-control" name="endH" id="endH" aria-describedby="helpId" placeholder="">
-                                <small id="helpId" class="form-text text-muted">Hora Fin</small>
-                            </div>
-                       </div>
-                      
+                       {{-- <div class="row">
+                       <div class="form-group col-md-6">
+                        <label for="title">Lugar Evento</label>
+                        <input type="text" class="form-control" name="lugar" id="lugar">
+                        <small id="helpId" class="form-text text-muted">&nbsp;</small>
+                      </div>
+                       <div class="form-group col-md-6">
+                        <label for="title">Resolución del Evento</label>
+                        <input type="text" class="form-control" name="resolucion">
+                        <small id="helpId" class="form-text text-muted">&nbsp;</small>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="title">Costo del Evento</label>
+                        <input type="text" class="form-control" name="costo">
+                        <small id="helpId" class="form-text text-muted">&nbsp;</small>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="title">Tipo del Evento</label>
+                        <select name="tipo_event_id" id="" class="form-select">
+                            @foreach ($tipo as $item)
+                                <option value="{{ $item->id  }}">{{ $item->nombre_tipo_evento  }}</option>
+                            @endforeach
+                        </select>
+                        
+                      </div>
+                    </div> --}}
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                        <small id="helpId" class="form-text text-muted">&nbsp;</small>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <input type="date" class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="">
+                            <small id="helpId" class="form-text text-muted">Fecha Inicio</small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="time" class="form-control" name="startH" id="startH" aria-describedby="helpId" placeholder="">
+                            <small id="helpId" class="form-text text-muted">Hora Inicio</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <input type="date" class="form-control" name="end" id="end" aria-describedby="helpId" placeholder="">
+                            <small id="helpId" class="form-text text-muted">Fecha Fin</small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="time" class="form-control" name="endH" id="endH" aria-describedby="helpId" placeholder="">
+                            <small id="helpId" class="form-text text-muted">Hora Fin</small>
+                        </div>
+                    </div>
                    </form>
                 </div>
                 <div class="modal-footer">
@@ -70,8 +95,7 @@
         </div>
     </div>
     </div>
-            </div>
-
+</div>
 </div>
 </div>
 </div>
