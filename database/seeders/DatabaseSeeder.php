@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\TipoEvento;
 use App\Models\TipoUsuario;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -47,5 +48,60 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'tipo_usuario_id' => '3',
         ]);
+        TipoEvento::factory()->create([
+            'nombre_tipo_evento' => 'Reunión de Docentes',
+            'tiene_memo' => 1
+        ]);
+        TipoEvento::factory()->create([
+            'nombre_tipo_evento' => 'Reunión de Estudiantes',
+            'tiene_memo' => 1
+        ]);
+        TipoEvento::factory()->create([
+            'nombre_tipo_evento' => 'Jornada de Limpieza',
+            'tiene_memo' => 1
+        ]);
+        TipoEvento::factory()->create([
+            'nombre_tipo_evento' => 'Ensayo',
+            'tiene_memo' => 0
+        ]);
+        TipoEvento::factory()->create([
+            'nombre_tipo_evento' => 'Evento Deportivo',
+            'tiene_memo' => 0
+        ]);
+        TipoEvento::factory()->create([
+            'nombre_tipo_evento' => 'Entrenamiento Deportivo',
+            'tiene_memo' => 0
+        ]);
+        TipoEvento::factory()->create([
+            'nombre_tipo_evento' => 'Tutoría Grupal',
+            'tiene_memo' => 0
+        ]);
+        TipoEvento::factory()->create([
+            'nombre_tipo_evento' => 'Capacitación Docentes',
+            'tiene_memo' => 1
+        ]);
+        TipoEvento::factory()->create([
+            'nombre_tipo_evento' => 'Inducción',
+            'tiene_memo' => 1
+        ]);
+        TipoEvento::factory()->create([
+            'nombre_tipo_evento' => 'Congreso',
+            'tiene_memo' => 1
+        ]);
+        TipoEvento::factory()->create([
+            'nombre_tipo_evento' => 'Charla',
+            'tiene_memo' => 1
+        ]);
+        TipoEvento::factory()->create([
+            'nombre_tipo_evento' => 'Concurso de Programación',
+            'tiene_memo' => 1
+        ]);
+        TipoEvento::factory()->create([
+            'nombre_tipo_evento' => 'Actividad de medio ambiente',
+            'tiene_memo' => 1
+        ]);
+        
+
+        
     }
 }

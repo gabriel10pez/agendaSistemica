@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('tipo_eventos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_tipo_evento');
-            $table->string('categoria_tipo_evento');
+            $table->boolean('tiene_memo')->nullable();
+            $table->string('categoria_tipo_evento')->nullable();
             $table->timestamps();
         });
     }
