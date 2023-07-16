@@ -1,5 +1,12 @@
 <?php
 
+use App\Http\Controllers\ActaController;
+use App\Http\Controllers\AsistenteController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\IncidenciaController;
+use App\Http\Controllers\MemorandumController;
+use App\Http\Controllers\TipoEventoController;
+use App\Http\Controllers\TipoUsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +22,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+    
 });
-
+Route::resource('tiposusuarios', TipoUsuarioController::class);
+    Route::resource('incidencias', IncidenciaController::class);
+    Route::resource('asistentes', AsistenteController::class);
+    Route::resource('tiposeventos', TipoEventoController::class);
+    Route::resource('acta', ActaController::class);
+    Route::resource('memorandum', MemorandumController::class);
+    Route::resource('evento', EventController::class);
 // rama populate
 //! pop rama
 //LordAndre
