@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Memorandum;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MemorandumController extends Controller
 {
@@ -13,6 +14,11 @@ class MemorandumController extends Controller
     public function index()
     {
         return view('memoranda.memoindex');
+    }
+    public function report(){
+        $memos = Memorandum::all();
+        $pdf = Pdf::loadView('memoranda.report', compact('memos'));
+        return $pdf->stream('invoice.pdf');
     }
 
     /**

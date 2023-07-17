@@ -15,3 +15,19 @@
         </div>
     </div>
 @endsection
+@push('custom-scripts')
+{{--agregamos para que esche lel livewuire--}}
+@livewireScripts
+@livewireStyles
+<script>
+    Livewire.on('alert',function(title,message){
+            Lobibox.notify('success', {
+                    width: 400,
+                    img: "{{asset('imgs/success.png')}}",
+                    position: 'top right',
+                    title: title,
+                    msg: message
+                });
+        })
+</script>
+@endpush
