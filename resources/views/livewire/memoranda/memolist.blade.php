@@ -35,7 +35,7 @@
                             <a class="btn btn-success" href="" data-bs-toggle="modal"
                                 data-bs-target="#editar_memo" wire:click="edit({{$memo}})" >
                                     <i class="fa-solid fa-pen-to-square"></i></a>
-                            <a class="btn btn-info" href="{{ route('memoranda-report')}}"   >
+                            <a class="btn btn-info" href="{{ route('memoranda-report', $memo->id)}}"   >
                                     <i class="fa-solid fa-print"></i></a>
 
                             {{-- @livewire('memoranda.edit-memo', ['memo' => $memo], key($memo->id)) @livewire('memoranda.imprimir-memo', ['memo' => $memo], key($memo->id)) --}}

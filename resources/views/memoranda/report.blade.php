@@ -34,6 +34,7 @@
                     <td>{{ $memo->cuerpo_memorandum }}</td>
 
                 </tr>
+
             @endforeach
         </tbody>
     </table>
