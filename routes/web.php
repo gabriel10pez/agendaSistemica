@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/evento', [EventoController::class, 'index']);
     Route::get('/evento/mostrar', [EventoController::class, 'show']);
@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/evento/actualizar/{evento}', [EventoController::class, 'update']);
     Route::post('/evento/borrar/{id}', [EventoController::class, 'destroy']);
 });
-    
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

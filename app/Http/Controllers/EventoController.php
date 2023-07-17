@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Asistente;
+use App\Models\Event;
 use Illuminate\Support\Facades\DB;
 use App\Models\Evento;
+use App\Models\Memorandum;
 use App\Models\TipoEvento;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use DateTime;
@@ -20,9 +24,9 @@ class EventoController extends Controller
      */
     public function index()
     {
-        // $evento = Evento::all();
-        // return $evento;
-        return view('evento.index');
+        $tipo = TipoEvento::all();
+        $usuarios = User::all();
+        return view('evento.index', compact('tipo', 'usuarios'));
     }
 
     /**
@@ -45,14 +49,67 @@ class EventoController extends Controller
     {
         request()->validate(Evento::$rules);
 
-        DB::table('events')->insert([
+        $usuarios = User::all();
+        $docentes = User::where('users.tipo_usuario_id', '=', 2)->select('users.*')->get();
+        $estudiantes = User::where('users.tipo_usuario_id', '=', 3)->select('users.*')->get();
+
+        $evento = Evento::create([
             'user_id' => auth()->user()->id,
             'title' => request()->input('title'),
             'description' => request()->input('description'),
             'start' => request()->input('start') . ' ' . request()->input('startH'),
             'end' => request()->input('end') . ' ' . request()->input('endH'),
-            
+            'lugar_evento' => request()->input('lugar_evento'),
+            'resolucion_evento' => request()->input('resolucion'),
+            'costo_evento' => request()->input('costo'),
+            'tipo_event_id' => request()->input('tipo_event_id'),
         ]);
+
+        if (request()->has('memorandum')) {
+            $memo = Memorandum::create([
+                'anio_memorandum' => now()->year,
+                'remitente_memorandum' => auth()->user()->name,
+                'cuerpo_memorandum' => request()->input('memorandum'),
+                'event_id' => $evento->id,
+            ]);
+
+            $memo->update([
+                'numero_memorandum' => $memo->id . '-' . now()->year,
+            ]);
+        }
+
+        if (request()->has('id_asistente_usuario')) {
+            $asists = request()->get('id_asistente_usuario');
+            foreach ($asists as $asist) {
+                $asistentes = Asistente::create([
+                    'id_asistente_usuario' => $asist,
+                    'event_id' => $evento->id,
+                ]);
+            }
+        }
+
+        if (request()->input('grupo') == 'comunidad_sis') {
+            foreach ($usuarios as $usuario) {
+                $asistentes = Asistente::create([
+                    'id_asistente_usuario' => $usuario->id,
+                    'event_id' => $evento->id,
+                ]);
+            }
+        } elseif (request()->input('grupo') == 'docentes') {
+            foreach ($docentes as $docente) {
+                $asistentes = Asistente::create([
+                    'id_asistente_usuario' => $docente->id,
+                    'event_id' => $evento->id,
+                ]);
+            }
+        } elseif (request()->input('grupo') == 'estudiantes') {
+            foreach ($estudiantes as $estudiante) {
+                $asistentes = Asistente::create([
+                    'id_asistente_usuario' => $estudiante->id,
+                    'event_id' => $evento->id,
+                ]);
+            }
+        }
     }
 
     /**
@@ -64,7 +121,15 @@ class EventoController extends Controller
     public function show(Evento $evento)
     {
         //$evento = Evento::all();
-        $evento = DB::table('events')->where('user_id', '=', auth()->user()->id)->get();
+        // $evento = DB::table('events')->where('user_id', '=', auth()->user()->id)->get();
+
+        if (auth()->user()->tipo_usuario_id == 1) {
+            $evento = Evento::all();
+        } else {
+            $evento = Asistente::join('events', 'asistentes.event_id', '=', 'events.id')
+                ->select('asistentes.*', 'events.*')
+                ->where('asistentes.id_asistente_usuario', '=', auth()->user()->id)->get();
+        }
         return response()->json($evento);
     }
 
@@ -77,6 +142,11 @@ class EventoController extends Controller
     public function edit($id)
     {
         $evento = Evento::find($id);
+        $asistentes = Asistente::where('event_id', '=', $id)
+            ->select('id_asistente_usuario')
+            ->pluck('id_asistente_usuario')
+            ->toArray();
+        $evento->asistentes = $asistentes;
         $evento->startF = Carbon::createFromFormat('Y-m-d H:i:s', $evento->start)->format('Y-m-d');
         $evento->endF = Carbon::createFromFormat('Y-m-d H:i:s', $evento->end)->format('Y-m-d');
 

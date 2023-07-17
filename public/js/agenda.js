@@ -17,7 +17,7 @@
               url: baseURL+'/evento/mostrar',
               metohd: "GET",
               extraParams: {
-                  _token: formulario._token,    
+                  _token: formulario._token,
               }
           },
 
@@ -59,7 +59,7 @@
                 )
           }
         });
-        
+
         calendar.render();
 
         document.getElementById('btnGuardar').addEventListener('click', function(){
@@ -77,12 +77,12 @@
         document.getElementById('btnCerrar').addEventListener('click', function(){
             $('#evento').modal('hide');
         });
-        
+
         function enviarDatos(url){
             const datos = new FormData(formulario);
 
             nuevaURL = baseURL+url;
-        
+
             axios.post(nuevaURL, datos).
             then(
                     (respuesta)=>{

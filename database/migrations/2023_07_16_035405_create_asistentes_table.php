@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('asistentes', function (Blueprint $table) {
             $table->id();
             $table->integer('id_asistente_usuario');
-            $table->boolean('asistio');
+            $table->boolean('asistio')->nullable();
             $table->timestamps();
 
             $table->foreignId('event_id')->nullable()->constrained('events')->onDelete('cascade');
