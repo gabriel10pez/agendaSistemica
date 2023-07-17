@@ -41,3 +41,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/controleventos', [EventoController::class, 'control_eventos'])->name('control_eventos');
