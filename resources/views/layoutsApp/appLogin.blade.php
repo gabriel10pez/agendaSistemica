@@ -44,8 +44,8 @@
 							<!--end::Aside mobile toggle-->
 							<!--begin::Logo-->
 							<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
-								<a href="https://app.codigoromano.dev/evento">
-									<img alt="Logo" src="assets/media/logos/logo-default.png" class="h-35px" />
+								<a href="home">
+									<h1>Agenda Sistémica</h1>
 								</a>
 							</div>
 							<!--end::Logo-->

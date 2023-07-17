@@ -66,7 +66,7 @@
                         <!--begin::Logo-->
                         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
                             <a href="home">
-                                <h1>Sistema Agenda</h1>
+                                <h1>Agenda Sistémica</h1>
                             </a>
                         </div>
                         <!--end::Logo-->
