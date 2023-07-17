@@ -43,3 +43,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/controleventos', [EventoController::class, 'control_eventos'])->name('control_eventos');
+Route::get('/controleventos/{evento}/acta', [EventoController::class, 'control_evento_acta'])->name('control_evento_acta');
+Route::post('/controleventos/{evento}/acta/guardar', [EventoController::class, 'control_evento_acta_guardar'])->name('control_evento_acta_guardar');
+
+Route::get('/actas', [EventoController::class, 'actas'])->name('actas');
+Route::get('/actas/{acta}/pdf', [EventoController::class, 'acta_pdf'])->name('acta_pdf');

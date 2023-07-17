@@ -32,4 +32,9 @@ class Evento extends Model
         'costo_evento',
         'tipo_event_id',
     ];
+
+    public function tipo_evento()
+    {
+        return $this->belongsTo(TipoEvento::class);
+    }
 }

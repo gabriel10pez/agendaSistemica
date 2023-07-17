@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('actas', function (Blueprint $table) {
             $table->id();
-            $table->string('numero_acta');
+            $table->string('numero_acta')->nullable();
             $table->string('cuerpo_acta');
             $table->timestamps();
 
             $table->foreignId('event_id')->nullable()->constrained('events')->onDelete('cascade');
-
         });
     }
 

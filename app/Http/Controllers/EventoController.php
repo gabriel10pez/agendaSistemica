@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Acta;
 use App\Models\Asistente;
 use App\Models\Event;
 use Illuminate\Support\Facades\DB;
@@ -11,8 +12,14 @@ use App\Models\TipoEvento;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 use DateTime;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\In;
+use Nette\Utils\Strings;
+use PhpParser\Node\Expr\Cast\Int_;
+use Ramsey\Uuid\Type\Integer;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 
 class EventoController extends Controller
@@ -194,7 +201,69 @@ class EventoController extends Controller
 
     public function control_eventos()
     {
-        $eventos = Evento::all();
-        return $eventos;
+        return view('evento.controlevento');
+    }
+
+    public function control_evento_acta(Evento $evento)
+    {
+        $asistentes = Asistente::join('events', 'asistentes.event_id', '=', 'events.id')
+            ->join('users', 'asistentes.id_asistente_usuario', '=', 'users.id')
+            ->select('asistentes.id_asistente_usuario', 'users.name')
+            ->where('events.id', '=', $evento->id)
+            ->get();
+        // return $asistentes;
+        return view('evento.eventoacta', compact('evento', 'asistentes'));
+    }
+
+    public function control_evento_acta_guardar(Request $request, Evento $evento)
+    {
+        // $asistencias = $request->asistencia;
+        // foreach ($asistencias as $asist) {
+        //     echo $asist;
+        // }
+        // return $asistencias;
+        $acta = Acta::create([
+            'cuerpo_acta' => $request->cuerpo_acta,
+            'event_id' => $evento->id
+        ]);
+
+        $acta->update([
+            'numero_acta' => $acta->id . '-' . now()->year
+        ]);
+
+        if ($request->asistencia) {
+            $asistencias = $request->asistencia;
+            foreach ($asistencias as $asist) {
+                Asistente::where('id_asistente_usuario', $asist)
+                    ->where('event_id', $evento->id)
+                    ->update([
+                        'asistio' => 1,
+                    ]);
+            }
+        }
+
+        return redirect()->route('control_eventos');
+    }
+
+    public function actas()
+    {
+        return view('evento.actaslista');
+    }
+
+    public function acta_pdf(Acta $acta)
+    {
+        // return $acta;
+        $evento = Evento::find($acta->event_id);
+        $usuario = User::find($evento->user_id);
+        $asistentes = Asistente::join('events', 'asistentes.event_id', '=', 'events.id')
+            ->join('users', 'asistentes.id_asistente_usuario', '=', 'users.id')
+            ->select('asistentes.id_asistente_usuario', 'users.name')
+            ->where('events.id', '=', $evento->id)
+            ->where('asistentes.asistio', '=', 1)
+            ->get();
+        // return $acta;
+
+        $pdf = Pdf::loadView('evento.actapdf', ['acta' => $acta, 'evento' => $evento, 'asistentes' => $asistentes, 'usuario' => $usuario]);
+        return $pdf->stream();
     }
 }
