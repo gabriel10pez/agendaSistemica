@@ -191,4 +191,10 @@ class EventoController extends Controller
         $evento = Evento::find($id)->delete();
         return response()->json($evento);
     }
+
+    public function control_eventos()
+    {
+        $eventos = Evento::all();
+        return $eventos;
+    }
 }
