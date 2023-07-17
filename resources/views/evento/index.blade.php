@@ -32,7 +32,7 @@
                          <input type="text" class="form-control" name="title" id="title">
                          <small id="helpId" class="form-text text-muted">&nbsp;</small>
                        </div>
-                       {{-- <div class="row">
+                        <div class="row">
                        <div class="form-group col-md-6">
                         <label for="title">Lugar Evento</label>
                         <input type="text" class="form-control" name="lugar" id="lugar">
@@ -57,7 +57,7 @@
                         </select>
                         
                       </div>
-                    </div> --}}
+                    </div> 
                     <div class="form-group">
                         <label for="descripcion">Descripción</label>
                         <textarea class="form-control" name="description" id="description" rows="3"></textarea>
