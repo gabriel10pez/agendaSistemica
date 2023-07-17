@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\MemorandumController;
+use App\Models\Memorandum;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +32,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/evento/actualizar/{evento}', [EventoController::class, 'update']);
     Route::post('/evento/borrar/{id}', [EventoController::class, 'destroy']);
 });
+
+Route::get('/memoranda', [MemorandumController::class, 'index'])->name('memoranda');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
