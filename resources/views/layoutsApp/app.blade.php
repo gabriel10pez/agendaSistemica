@@ -43,7 +43,7 @@
         var baseURL = {!! json_encode(url('/')) !!}
     </script>
     <!--end::Global Stylesheets Bundle-->
-
+    @livewireStyles
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -126,6 +126,13 @@
                                             class="menu-item here show menu-lg-down-accordion me-lg-1">
                                             <span class="menu-link py-3">
                                                 <span class="menu-title">Reportes</span>
+                                                <span class="menu-arrow d-lg-none"></span>
+                                            </span>
+                                        </a>
+                                        <a href="{{ route('memoranda') }}" data-kt-menu-placement="bottom-start"
+                                            class="menu-item here show menu-lg-down-accordion me-lg-1">
+                                            <span class="menu-link py-3">
+                                                <span class="menu-title">Memorándums</span>
                                                 <span class="menu-arrow d-lg-none"></span>
                                             </span>
                                         </a>
@@ -330,5 +337,6 @@
     @stack('js')
 </body>
 <!--end::Body-->
+@livewireScripts
 
 </html>

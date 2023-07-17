@@ -12,7 +12,7 @@ class MemorandumController extends Controller
      */
     public function index()
     {
-        //
+        return view('memoranda.memoindex');
     }
 
     /**
