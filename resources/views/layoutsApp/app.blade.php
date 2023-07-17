@@ -33,6 +33,7 @@
 
     {{-- Select 2 --}}
     <link rel="stylesheet" href="{{ asset('assets/select2/select2.min.css') }}">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
 
     {{-- Notificaciones --}}
     <link rel="stylesheet" href="{{ asset('assetsnotf/css/Lobibox.min.css') }}">
@@ -85,7 +86,7 @@
                                     <div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
                                         id="#kt_header_menu" data-kt-menu="true">
 
-                                        <a  href="{{route('home')}}" data-kt-menu-placement="bottom-start"
+                                        <a href="{{ route('home') }}" data-kt-menu-placement="bottom-start"
                                             class="menu-item here show menu-lg-down-accordion me-lg-1">
                                             <span class="menu-link py-3">
                                                 <span class="menu-title">Eventos</span>
@@ -93,35 +94,35 @@
                                             </span>
                                         </a>
 
-                                        <a  href="#" data-kt-menu-placement="bottom-start"
+                                        <a href="#" data-kt-menu-placement="bottom-start"
                                             class="menu-item here show menu-lg-down-accordion me-lg-1">
                                             <span class="menu-link py-3">
                                                 <span class="menu-title">Configuración de la cuenta</span>
                                                 <span class="menu-arrow d-lg-none"></span>
                                             </span>
                                         </a>
-                                        <a  href="#" data-kt-menu-placement="bottom-start"
+                                        <a href="#" data-kt-menu-placement="bottom-start"
                                             class="menu-item here show menu-lg-down-accordion me-lg-1">
                                             <span class="menu-link py-3">
                                                 <span class="menu-title">Incidencia</span>
                                                 <span class="menu-arrow d-lg-none"></span>
                                             </span>
                                         </a>
-                                        <a  href="#" data-kt-menu-placement="bottom-start"
+                                        <a href="#" data-kt-menu-placement="bottom-start"
                                             class="menu-item here show menu-lg-down-accordion me-lg-1">
                                             <span class="menu-link py-3">
                                                 <span class="menu-title">Control del Evento</span>
                                                 <span class="menu-arrow d-lg-none"></span>
                                             </span>
                                         </a>
-                                        <a  href="#" data-kt-menu-placement="bottom-start"
+                                        <a href="#" data-kt-menu-placement="bottom-start"
                                             class="menu-item here show menu-lg-down-accordion me-lg-1">
                                             <span class="menu-link py-3">
                                                 <span class="menu-title">Control del Evento</span>
                                                 <span class="menu-arrow d-lg-none"></span>
                                             </span>
                                         </a>
-                                        <a  href="#" data-kt-menu-placement="bottom-start"
+                                        <a href="#" data-kt-menu-placement="bottom-start"
                                             class="menu-item here show menu-lg-down-accordion me-lg-1">
                                             <span class="menu-link py-3">
                                                 <span class="menu-title">Reportes</span>
@@ -130,7 +131,7 @@
                                         </a>
 
                                     </div>
-                                    
+
                                     <!--end::Menu-->
                                 </div>
                                 <!--end::Menu wrapper-->
@@ -141,7 +142,8 @@
                                 <!--begin::Toolbar wrapper-->
                                 <div class="d-flex align-items-stretch flex-shrink-0">
                                     <!--begin::User-->
-                                    <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+                                    <div class="d-flex align-items-center ms-1 ms-lg-3"
+                                        id="kt_header_user_menu_toggle">
                                         <!--begin::Menu-->
                                         <div class="cursor-pointer symbol symbol-35px" data-kt-menu-trigger="click"
                                             data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end"
@@ -318,11 +320,14 @@
     <script src="{{ asset('assets/datatable/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/datatable/dataTables.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('assets/sweetalert/sweetalert2@11.js') }}"></script>
-    <script src="{{ asset('assets/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/select2/select2.min.js') }}" defer></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script> --}}
     <script src="{{ asset('assetsnotf/js/Lobibox.js') }}"></script>
     <script src="{{ asset('assetsnotf/js/notification-active.js') }}"></script>
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->
+
+    @stack('js')
 </body>
 <!--end::Body-->
 

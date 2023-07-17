@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('memoranda', function (Blueprint $table) {
             $table->id();
-            $table->string('numero_memorandum');
+            $table->string('numero_memorandum')->nullable();
             $table->string('anio_memorandum');
             $table->string('remitente_memorandum');
             $table->text('cuerpo_memorandum');
