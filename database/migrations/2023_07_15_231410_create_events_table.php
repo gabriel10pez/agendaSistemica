@@ -8,28 +8,34 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     * 
+     *
      * @return void
      */
     public function up(): void
     {
-        Schema::create ('events', function (Blueprint $table)
-        {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger(column:'user_id');
-            $table->string(column:'start');
-            $table->string(column:'end');
-            $table->integer(column:'status')->default(value:0)->nullable();
-            $table->integer(column:'is_all_day')
-            ->default(value:0)
-            ->nullable();
-            $table->string(column:'title');
-            $table->text(column:'description');
-            $table->string(column:'event_id')
+            $table->unsignedBigInteger(column: 'user_id');
+            $table->dateTime(column: 'start');
+            $table->dateTime(column: 'end');
+            $table->integer(column: 'status')->default(value: 0)->nullable();
+            $table->integer(column: 'is_all_day')
+                ->default(value: 0)
+                ->nullable();
+            $table->string(column: 'title');
+            $table->text(column: 'description');
+            $table->string(column: 'event_id')
                 ->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign(columns:'user_id')->references(columns:'id')->on(table:'users');            
+
+            $table->date('fecha_evento')->nullable();
+            $table->string('lugar_evento')->nullable();
+            $table->string('resolucion_evento')->nullable();
+            $table->string('costo_evento')->nullable();
+
+            $table->foreign(columns: 'user_id')->references(columns: 'id')->on(table: 'users');
+            $table->foreignId('tipo_event_id')->nullable()->constrained('tipo_eventos')->onDelete('cascade');
         });
     }
 
