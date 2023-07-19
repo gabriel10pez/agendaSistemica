@@ -47,7 +47,7 @@
                         formulario.end.value=respuesta.data.endF;
                         formulario.startH.value=respuesta.data.startH;
                         formulario.endH.value=respuesta.data.endH;
-
+                        
                         $('#evento').modal('show');
                     }
                 ).catch(

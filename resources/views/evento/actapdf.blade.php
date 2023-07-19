@@ -18,8 +18,8 @@
 </head>
 
 <body>
-    <h1 class="text-center">ACTA {{ $acta->numero_acta }}</h1>
-    <div class="row">
+    <h2 class="text-center text-decoration-underline">ACTA {{ $acta->numero_acta }}-DDA-EPIS-FIMEES-UNAP</h2>
+    <div class="row py-4">
         <div class="col-12">
             <p class="justy">En la ciudad de Puno, el día
                 {{ date('d/m/Y', strtotime($evento->start)) }} a horas {{ date('h:iA', strtotime($evento->start)) }}, se
@@ -31,7 +31,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <p>La reunión contó con la asistencia de los siguientes docentes:</p>
+            <p>La reunión contó con la asistencia de los siguientes asistentes:</p>
             <ol>
                 @foreach ($asistentes as $asis)
                     <li>{{ $asis->name }}</li>
@@ -41,8 +41,8 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <p>El objetivo principal de esta reunión fue discutir y tomar decisiones sobre los siguientes temas:</p>
-            <p>{{ $acta->cuerpo_acta }}</p>
+            <p class="justy">El objetivo principal de esta reunión fue discutir y tomar decisiones sobre los siguientes temas:</p>
+            <p class="justy">{{ $acta->cuerpo_acta }}</p>
         </div>
     </div>
 

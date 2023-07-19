@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Incidencia;
 use Illuminate\Http\Request;
-
-class IncidenciaController extends Controller
+use App\Models\User;
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('incidencia.index');
+        return view('user.index');
     }
 
     /**
@@ -34,7 +33,7 @@ class IncidenciaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Incidencia $incidencia)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +41,7 @@ class IncidenciaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Incidencia $incidencia)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +49,7 @@ class IncidenciaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Incidencia $incidencia)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +57,7 @@ class IncidenciaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Incidencia $incidencia)
+    public function destroy(string $id)
     {
         //
     }
