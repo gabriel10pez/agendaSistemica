@@ -15,6 +15,7 @@
                 <th scope="col">N°</th>
                 <th scope="col">Título</th>
                 <th scope="col">Descripción</th>
+                {{-- <th scope="col">Imagen</th> --}}
 
                 <th scope="col" width="200px">Acción</th>
             </tr>
@@ -25,8 +26,9 @@
                     <td>{{ $incidencia->rowNumber }}</td>
                     <td>{{ $incidencia->titulo_incidencia }}</td>
                     <td>{{ $incidencia->descripcion }}</td>
+                    {{-- <td><img src="{{$incidencia->foto_incidencia}}"></td> --}}
                     <td>
-                        <button class="btn btn-sm btn-danger"> <i class="fa-solid fa-trash"></i></button>
+                        <button class="btn btn-sm btn-danger" wire:click="delete({{ $incidencia->id }})"> <i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
             @endforeach

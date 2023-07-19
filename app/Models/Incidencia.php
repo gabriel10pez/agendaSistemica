@@ -10,7 +10,9 @@ class Incidencia extends Model
     use HasFactory;
 
     protected $table = "incidencias";
-
+    
+    // protected $fillable = ['titulo_incidencia', 'descripcion', 'fecha_incidencia', 'foto_incidencia', 'user_id'];
+    
     static $rules = [
         'titulo_incidencia' => 'required',
         'descripcion' => 'required',
@@ -21,4 +23,5 @@ class Incidencia extends Model
         'updated_at'
         // 'fecha_evento' => 'required',
     ];
+
 }
