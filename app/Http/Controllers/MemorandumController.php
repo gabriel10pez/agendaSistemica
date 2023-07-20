@@ -15,9 +15,8 @@ class MemorandumController extends Controller
     {
         return view('memoranda.memoindex');
     }
-    public function report(  $id){
+    public function report( $id){
         //$memos = Memorandum::all();
-        $ides =  $id;
         $memos = Memorandum::select('memoranda.id', 'memoranda.numero_memorandum', 'memoranda.anio_memorandum', 'memoranda.remitente_memorandum', 'memoranda.cuerpo_memorandum', 'memoranda.created_at', 'memoranda.updated_at', 'tipo_eventos.nombre_tipo_evento')
             ->join('events', 'events.id', '=', 'memoranda.event_id')
             ->join('tipo_eventos', 'tipo_eventos.id', '=', 'events.tipo_event_id')
@@ -28,7 +27,7 @@ class MemorandumController extends Controller
             $memo->rowNumber = $memos->firstItem() + $index;
         });
 
-        $pdf = Pdf::loadView('memoranda.report', compact('memos','ides'));
+        $pdf = Pdf::loadView('memoranda.report', compact('memos'));
 
         return $pdf->stream('invoice.pdf');
     }

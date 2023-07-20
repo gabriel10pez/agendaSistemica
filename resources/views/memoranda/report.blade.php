@@ -11,6 +11,8 @@
     <title>Reporte de memos</title>
   </head>
   <body>
+    <img src="" alt="">
+    l;ogo de la escuela  <h1>escyuelka profecuional de ingenier ade sistemas</h1>   lgo de la universidad
     <table class="table table-striped table-hover">
         <thead>
             <tr>

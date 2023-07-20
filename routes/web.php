@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::get('/memoranda', [MemorandumController::class, 'index'])->name('memoranda');
+// href="{{ route('memoranda-report', $memo->id)}}"
 Route::get('/memoranda/reportPDF/{id}', [MemorandumController::class, 'report'])->name('memoranda-report');
 
 
