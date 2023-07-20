@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\IncidenciaController;
 use App\Http\Controllers\MemorandumController;
+use App\Http\Controllers\UserController;
+use App\Http\Livewire\Incidencias;
 use App\Models\Memorandum;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -50,3 +53,13 @@ Route::post('/controleventos/{evento}/acta/guardar', [EventoController::class, '
 
 Route::get('/actas', [EventoController::class, 'actas'])->name('actas');
 Route::get('/actas/{acta}/pdf', [EventoController::class, 'acta_pdf'])->name('acta_pdf');
+
+
+
+Route::resource('incidencias', IncidenciaController::class);
+// Route::get('/incidencias', [IncidenciaController::class,'index'])->name('incidencias');
+// Route::get('/incidencias/crear', [IncidenciaController::class,'create'])->name('crear_incidencia');
+// Route::post('/incidencias/', [IncidenciaController::class, 'store'])->name('incidencias.store');
+Route::get('/user', [UserController::class,'index'])->name('user');
+
+// Route::get('/dsadsa', Incidencias::class);
