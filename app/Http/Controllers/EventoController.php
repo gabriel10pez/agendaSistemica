@@ -148,7 +148,9 @@ class EventoController extends Controller
      */
     public function edit($id)
     {
+
         $evento = Evento::find($id);
+        //return $evento;
         $asistentes = Asistente::where('event_id', '=', $id)
             ->select('id_asistente_usuario')
             ->pluck('id_asistente_usuario')
@@ -173,13 +175,15 @@ class EventoController extends Controller
     public function update(Request $request, Evento $evento)
     {
         request()->validate(Evento::$rules);
-
+        //return $request;
         DB::table('events')
             ->where('id', request()->id)
             ->update([
                 'user_id' => Auth::user()->id,
                 'title' => request()->input('title'),
-                'description' => request()->input('descripcion'),
+                'description' => request()->input('description'),
+                'lugar_evento' => request()->input('lugar_evento'),
+
                 'start' => request()->input('start') . ' ' . request()->input('startH'),
                 'end' => request()->input('end') . ' ' . request()->input('endH')
             ]);
