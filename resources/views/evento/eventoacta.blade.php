@@ -44,7 +44,7 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-success">Guardar Acta</button>
+                            <button type="submit" class="btn btn-success">Generar Acta</button>
                         </form>
                     </div>
                 </div>

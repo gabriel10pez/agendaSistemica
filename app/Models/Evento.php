@@ -30,6 +30,7 @@ class Evento extends Model
         'lugar_evento',
         'resolucion_evento',
         'costo_evento',
+        'controlado',
         'tipo_event_id',
     ];
 

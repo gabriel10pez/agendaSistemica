@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AsistenteController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\IncidenciaController;
 use App\Http\Controllers\MemorandumController;
@@ -53,13 +54,15 @@ Route::post('/controleventos/{evento}/acta/guardar', [EventoController::class, '
 Route::get('/actas', [EventoController::class, 'actas'])->name('actas');
 Route::get('/actas/{acta}/pdf', [EventoController::class, 'acta_pdf'])->name('acta_pdf');
 
+// REPORTES DE ASISTENCIAS
+Route::get('/reporte/{user}', [AsistenteController::class, 'reportes_pdf'])->name('reportes_pdf');
+
 
 
 Route::resource('incidencias', IncidenciaController::class);
 // Route::get('/incidencias', [IncidenciaController::class,'index'])->name('incidencias');
 // Route::get('/incidencias/crear', [IncidenciaController::class,'create'])->name('crear_incidencia');
 // Route::post('/incidencias/', [IncidenciaController::class, 'store'])->name('incidencias.store');
-
 
 Route::resource('user',UserController::class);
 Route::put('updatePass/{user}',[UserController::class,'updatePass'])->name('updatePass');
