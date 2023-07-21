@@ -63,6 +63,7 @@ Route::resource('incidencias', IncidenciaController::class);
 // Route::get('/incidencias', [IncidenciaController::class,'index'])->name('incidencias');
 // Route::get('/incidencias/crear', [IncidenciaController::class,'create'])->name('crear_incidencia');
 // Route::post('/incidencias/', [IncidenciaController::class, 'store'])->name('incidencias.store');
-Route::get('/user', [UserController::class, 'index'])->name('user');
 
+Route::resource('user',UserController::class);
+Route::put('updatePass/{user}',[UserController::class,'updatePass'])->name('updatePass');
 // Route::get('/dsadsa', Incidencias::class);
