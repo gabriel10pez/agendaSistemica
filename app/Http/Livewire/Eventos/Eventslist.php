@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Eventos;
 
+use App\Models\Acta;
 use App\Models\Evento;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -29,6 +30,7 @@ class Eventslist extends Component
         $eventos->each(function ($evento, $index) use ($eventos) {
             $evento->rowNumber = $eventos->firstItem() + $index;
         });
+
         return view('livewire.eventos.eventslist', [
             'eventos' => $eventos,
         ]);

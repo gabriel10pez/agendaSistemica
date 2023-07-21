@@ -18,7 +18,19 @@
 </head>
 
 <body>
-    <h2 class="text-center text-decoration-underline">ACTA {{ $acta->numero_acta }}-DDA-EPIS-FIMEES-UNAP</h2>
+    {{-- AGREGA CEROS A LA IZQUIERDA --}}
+    @php
+        $numero = $acta->numero_acta;
+        $digitos = strlen((string) $numero);
+        
+        if ($digitos <= 6) {
+            $numeroFormateado = str_pad($numero, 8, '0', STR_PAD_LEFT);
+            $resultado = $numeroFormateado;
+        } else {
+            $resultado = $numero;
+        }
+    @endphp
+    <h2 class="text-center text-decoration-underline">ACTA {{ $resultado }}-DDA-EPIS-FIMEES-UNAP</h2>
     <div class="row py-4">
         <div class="col-12">
             <p class="justy">En la ciudad de Puno, el día
@@ -41,7 +53,8 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <p class="justy">El objetivo principal de esta reunión fue discutir y tomar decisiones sobre los siguientes temas:</p>
+            <p class="justy">El objetivo principal de esta reunión fue discutir y tomar decisiones sobre los siguientes
+                temas:</p>
             <p class="justy">{{ $acta->cuerpo_acta }}</p>
         </div>
     </div>

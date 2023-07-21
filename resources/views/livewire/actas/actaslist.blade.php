@@ -45,8 +45,8 @@
                                     </p>
                                 </small>
                             </td>
-                            <td><a href="{{ route('acta_pdf', $acta) }}" class="btn btn-sm btn-success"><i
-                                        class="fa-solid fa-print"></i></a>
+                            <td><a target="_blank" href="{{ route('acta_pdf', $acta) }}"
+                                    class="btn btn-sm btn-success"><i class="fa-solid fa-print"></i></a>
                             </td>
                         </tr>
                     @endforeach

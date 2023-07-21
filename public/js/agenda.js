@@ -41,13 +41,16 @@
             then(
 
                     (respuesta)=>{
-                        // console.log("respuesta");
-                        // console.log(respuesta);
+                        console.log("respuesta");
+                        console.log(respuesta);
                         formulario.id.value=respuesta.data.id;
                         formulario.title.value=respuesta.data.title;
                         formulario.lugar_evento.value=respuesta.data.lugar_evento;
                         formulario.resolucion.value=respuesta.data.resolucion_evento;
                         formulario.costo.value=respuesta.data.costo_evento;
+                        if(respuesta.data.cuerpo_memorandum){
+                            formulario.memorandum.value=respuesta.data.cuerpo_memorandum;
+                        }
 
 
                         formulario.description.value=respuesta.data.description;
