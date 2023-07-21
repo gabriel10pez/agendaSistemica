@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('lugar_evento')->nullable();
             $table->string('resolucion_evento')->nullable();
             $table->string('costo_evento')->nullable();
-
+            $table->boolean('controlado')->nullable();
             $table->foreign(columns: 'user_id')->references(columns: 'id')->on(table: 'users');
             $table->foreignId('tipo_event_id')->nullable()->constrained('tipo_eventos')->onDelete('cascade');
         });
