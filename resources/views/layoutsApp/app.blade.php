@@ -94,7 +94,7 @@
                                             </span>
                                         </a>
 
-                                        <a href="{{route('user')}}" data-kt-menu-placement="bottom-start"
+                                        <a href="{{route('user.index')}}" data-kt-menu-placement="bottom-start"
                                             class="menu-item here show menu-lg-down-accordion me-lg-1">
                                             <span class="menu-link py-3">
                                                 <span class="menu-title">Configuración de Usuario</span>
