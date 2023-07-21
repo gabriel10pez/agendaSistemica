@@ -43,12 +43,12 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="title">Resolución del Evento</label>
-                                                    <input type="text" class="form-control" name="resolucion">
+                                                    <input type="text" class="form-control" name="resolucion" id="resolucion">
                                                     <small id="helpId" class="form-text text-muted">&nbsp;</small>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="title">Costo del Evento</label>
-                                                    <input type="text" class="form-control" name="costo">
+                                                    <input type="text" class="form-control" name="costo" id="costo">
                                                     <small id="helpId" class="form-text text-muted">&nbsp;</small>
                                                 </div>
                                                 <div class="form-group col-md-6">
