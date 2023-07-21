@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TipoUsuario;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 class UserController extends Controller
 {
     /**
@@ -41,17 +44,32 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        $tipo = TipoUsuario::all();
+        return view("user.edit",compact('user','tipo'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'tipo_usuario_id' => $request->tipo_usuario_id                      
+        ]);
+
+        return redirect()->route('user.index');
+    }
+
+    public function updatePass(Request $request, User $user)
+    {
+        $user->update([
+            'password' => Hash::make($request->password) ,          
+        ]);
+        return redirect()->route('user.index');
     }
 
     /**
@@ -61,4 +79,5 @@ class UserController extends Controller
     {
         //
     }
+    
 }
