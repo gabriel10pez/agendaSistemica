@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reporte - {{ $reportes[0]->name }}</title>
+    <title>Reporte - {{ $user->name }}</title>
     <link rel="shortcut icon" href="{{ asset('imgs/sistemas.png') }}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -32,7 +32,7 @@
     @endphp --}}
     <h2 class="text-center text-decoration-underline">REPORTE DE ASISTENCIAS</h2>
     <div class="row py-4">
-        <h4>{{ $reportes[0]->name }}</h4>
+        <h4>{{ $user->name }}</h4>
         <p><strong>Fecha: </strong>{{ date('d/m/Y', strtotime(now())) }}
             {{ date('h:iA', strtotime(now())) }}</p>
         <ol>
