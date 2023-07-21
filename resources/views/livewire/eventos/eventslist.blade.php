@@ -44,10 +44,11 @@
                     </td>
                     <td>{{ $evento->lugar_evento }}</td>
                     <td>
-                        <a href="{{ route('control_evento_acta', $evento->eventid) }}" class="btn btn-sm btn-primary"><i
-                                class="fa-solid fa-file-lines"></i>
-                            Control</a>
-
+                        @if ($evento->controlado != 1)
+                            <a href="{{ route('control_evento_acta', $evento->eventid) }}"
+                                class="btn btn-sm btn-primary"><i class="fa-solid fa-file-lines"></i>
+                                Control</a>
+                        @endif
                         <button class="btn btn-sm btn-danger"> <i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>

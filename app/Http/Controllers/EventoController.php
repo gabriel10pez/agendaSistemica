@@ -230,11 +230,10 @@ class EventoController extends Controller
 
     public function control_evento_acta_guardar(Request $request, Evento $evento)
     {
-        // $asistencias = $request->asistencia;
-        // foreach ($asistencias as $asist) {
-        //     echo $asist;
-        // }
-        // return $asistencias;
+        $evento->update([
+            'controlado' => 1,
+        ]);
+
         $acta = Acta::create([
             'cuerpo_acta' => $request->cuerpo_acta,
             'event_id' => $evento->id

@@ -13,7 +13,7 @@
         content="Craft, bootstrap, Angular 10, Vue, React, Laravel, admin themes, free admin themes, bootstrap admin, bootstrap dashboard" />
     <link rel="canonical" href="Https://preview.keenthemes.com/start" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" href="{{asset('imgs/sistemas.png')}}" />
+    <link rel="shortcut icon" href="{{ asset('imgs/sistemas.png') }}" />
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
@@ -94,14 +94,14 @@
                                             </span>
                                         </a>
 
-                                        <a href="{{route('user')}}" data-kt-menu-placement="bottom-start"
+                                        <a href="{{ route('user') }}" data-kt-menu-placement="bottom-start"
                                             class="menu-item here show menu-lg-down-accordion me-lg-1">
                                             <span class="menu-link py-3">
                                                 <span class="menu-title">Configuración de Usuario</span>
                                                 <span class="menu-arrow d-lg-none"></span>
                                             </span>
                                         </a>
-                                        <a href="{{route('incidencias.index')}}" data-kt-menu-placement="bottom-start"
+                                        <a href="{{ route('incidencias.index') }}" data-kt-menu-placement="bottom-start"
                                             class="menu-item here show menu-lg-down-accordion me-lg-1">
                                             <span class="menu-link py-3">
                                                 <span class="menu-title">Incidencia</span>
@@ -326,7 +326,6 @@
     <script src="{{ asset('assetsnotf/js/notification-active.js') }}"></script>
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->
-
     @stack('js')
 </body>
 <!--end::Body-->
