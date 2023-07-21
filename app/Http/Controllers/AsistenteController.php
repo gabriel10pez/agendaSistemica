@@ -67,13 +67,13 @@ class AsistenteController extends Controller
 
     public function reportes_pdf(User $user)
     {
-        // return $user;
         $reportes = Asistente::join('users', 'asistentes.id_asistente_usuario', '=', 'users.id')
             ->join('events', 'asistentes.event_id', '=', 'events.id')
             ->select('users.*', 'users.id as userid', 'asistentes.*', 'asistentes.id as asistenteid', 'events.*', 'events.id as eventid')
             ->where('asistentes.id_asistente_usuario', $user->id)
             ->get();
 
+        // total reuniones
         $asistotal = Asistente::where('asistentes.id_asistente_usuario', $user->id)->count();
 
         // Contar cuántos registros tienen valor 1 en la columna "asistio"
@@ -86,7 +86,7 @@ class AsistenteController extends Controller
             ->whereNull('asistio')
             ->count();
 
-        $pdf = Pdf::loadView('reporte.reportepdf', ['reportes' => $reportes, 'asistotal' => $asistotal, 'asistio' => $asistio, 'noasistio' => $noasistio]);
+        $pdf = Pdf::loadView('reporte.reportepdf', ['user' => $user, 'reportes' => $reportes, 'asistotal' => $asistotal, 'asistio' => $asistio, 'noasistio' => $noasistio]);
         return $pdf->stream();
     }
 }
