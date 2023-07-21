@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
 use DateTime;
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\In;
@@ -148,9 +149,17 @@ class EventoController extends Controller
      */
     public function edit($id)
     {
+        // 4 5 6 7
+        $evento_act = Evento::find($id);
 
-        $evento = Evento::find($id);
-        //return $evento;
+        if ($evento_act->tipo_event_id == 4 || $evento_act->tipo_event_id == 5 || $evento_act->tipo_event_id == 6 || $evento_act->tipo_event_id == 7) {
+            $evento = Evento::find($id);
+        } else {
+            $evento = Evento::join('memoranda', 'events.id', '=', 'memoranda.event_id')
+                ->select('events.*', 'memoranda.cuerpo_memorandum')
+                ->where('events.id', $id)
+                ->first();
+        }
         $asistentes = Asistente::where('event_id', '=', $id)
             ->select('id_asistente_usuario')
             ->pluck('id_asistente_usuario')
