@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoEvento;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,9 +25,10 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
+    {   
         $tipo = TipoEvento::all();
         $usuarios = User::all();
+        
         return view('evento.index', compact('tipo', 'usuarios'));
         // return redirect()->route()
     }

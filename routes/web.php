@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//$tipo=Auth::user()->tipo_usuario_id;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -37,8 +38,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/evento/borrar/{id}', [EventoController::class, 'destroy']);
 });
 
-Route::get('/memoranda', [MemorandumController::class, 'index'])->name('memoranda');
-Route::get('/memoranda/reportPDF/{id}', [MemorandumController::class, 'report'])->name('memoranda-report');
+
+
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -47,16 +48,20 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/controleventos', [EventoController::class, 'control_eventos'])->name('control_eventos');
-Route::get('/controleventos/{evento}/acta', [EventoController::class, 'control_evento_acta'])->name('control_evento_acta');
-Route::post('/controleventos/{evento}/acta/guardar', [EventoController::class, 'control_evento_acta_guardar'])->name('control_evento_acta_guardar');
+Route::group(['middleware' => auth()->user()->tipo_usuario_id==1], function () {
 
-Route::get('/actas', [EventoController::class, 'actas'])->name('actas');
-Route::get('/actas/{acta}/pdf', [EventoController::class, 'acta_pdf'])->name('acta_pdf');
+    Route::get('/memoranda', [MemorandumController::class, 'index'])->name('memoranda');
+    Route::get('/memoranda/reportPDF/{id}', [MemorandumController::class, 'report'])->name('memoranda-report');
+    Route::get('/controleventos', [EventoController::class, 'control_eventos'])->name('control_eventos');
+    Route::get('/controleventos/{evento}/acta', [EventoController::class, 'control_evento_acta'])->name('control_evento_acta');
+    Route::post('/controleventos/{evento}/acta/guardar', [EventoController::class, 'control_evento_acta_guardar'])->name('control_evento_acta_guardar');
 
-// REPORTES DE ASISTENCIAS
-Route::get('/reporte/{user}', [AsistenteController::class, 'reportes_pdf'])->name('reportes_pdf');
+    Route::get('/actas', [EventoController::class, 'actas'])->name('actas');
+    Route::get('/actas/{acta}/pdf', [EventoController::class, 'acta_pdf'])->name('acta_pdf');
 
+    // REPORTES DE ASISTENCIAS
+    Route::get('/reporte/{user}', [AsistenteController::class, 'reportes_pdf'])->name('reportes_pdf');
+});
 
 
 Route::resource('incidencias', IncidenciaController::class);
