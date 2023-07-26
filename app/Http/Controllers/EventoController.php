@@ -61,17 +61,31 @@ class EventoController extends Controller
         $docentes = User::where('users.tipo_usuario_id', '=', 2)->select('users.*')->get();
         $estudiantes = User::where('users.tipo_usuario_id', '=', 3)->select('users.*')->get();
 
-        $evento = Evento::create([
-            'user_id' => auth()->user()->id,
-            'title' => request()->input('title'),
-            'description' => request()->input('description'),
-            'start' => request()->input('start') . ' ' . request()->input('startH'),
-            'end' => request()->input('end') . ' ' . request()->input('endH'),
-            'lugar_evento' => request()->input('lugar_evento'),
-            'resolucion_evento' => request()->input('resolucion'),
-            'costo_evento' => request()->input('costo'),
-            'tipo_event_id' => request()->input('tipo_event_id'),
-        ]);
+        if (request()->has('costo')) {
+            $evento = Evento::create([
+                'user_id' => auth()->user()->id,
+                'title' => request()->input('title'),
+                'description' => request()->input('description'),
+                'start' => request()->input('start') . ' ' . request()->input('startH'),
+                'end' => request()->input('end') . ' ' . request()->input('endH'),
+                'lugar_evento' => request()->input('lugar_evento'),
+                'resolucion_evento' => request()->input('resolucion'),
+                'costo_evento' => request()->input('costo'),
+                'tipo_event_id' => request()->input('tipo_event_id'),
+            ]);
+        } else {
+            $evento = Evento::create([
+                'user_id' => auth()->user()->id,
+                'title' => request()->input('title'),
+                'description' => request()->input('description'),
+                'start' => request()->input('start') . ' ' . request()->input('startH'),
+                'end' => request()->input('end') . ' ' . request()->input('endH'),
+                'lugar_evento' => request()->input('lugar_evento'),
+                'resolucion_evento' => request()->input('resolucion'),
+                'gratis' => request()->input('gratis'),
+                'tipo_event_id' => request()->input('tipo_event_id'),
+            ]);
+        }
 
         if (request()->has('memorandum')) {
             $memo = Memorandum::create([

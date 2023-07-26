@@ -51,10 +51,17 @@
                                                             id="resolucion">
                                                         <small id="helpId" class="form-text text-muted">&nbsp;</small>
                                                     </div>
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-6 mb-2">
+                                                        <label for="title">Costo</label>
+                                                        <select name="gratis" id="gratis" class="form-select">
+                                                            <option value="1">Gratis</option>
+                                                            <option value="0">Tiene Costo</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6" id="costo_evento" hidden>
                                                         <label for="title">Costo del Evento</label>
                                                         <input type="text" class="form-control" name="costo"
-                                                            id="costo">
+                                                            id="costo" disabled>
                                                         <small id="helpId" class="form-text text-muted">&nbsp;</small>
                                                     </div>
                                                     <div class="form-group col-md-6">
@@ -191,7 +198,14 @@
                                                             id="resolucion" disabled>
                                                         <small id="helpId" class="form-text text-muted">&nbsp;</small>
                                                     </div>
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-6 mb-2">
+                                                        <label for="title">Costo</label>
+                                                        <select name="gratis" id="gratis" class="form-select">
+                                                            <option value="1">Gratis</option>
+                                                            <option value="0">Tiene Costo</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6" id="costo_evento" hidden>
                                                         <label for="title">Costo del Evento</label>
                                                         <input type="text" class="form-control" name="costo"
                                                             id="costo" disabled>
@@ -208,6 +222,7 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
+                                        
                                                 </div>
                                                 <div class="row" id="memo">
                                                     <div class="form-group">
@@ -272,6 +287,24 @@
             $('.select2').select2({
                 dropdownParent: $('.modal')
             });
+        });
+    </script>
+
+
+    {{-- form costo del evento --}}
+    <script>
+        const gratis = document.getElementById('gratis');
+        const costo = document.getElementById('costo');
+        const costo_evento = document.getElementById('costo_evento');
+
+        gratis.addEventListener('change', function() {
+            if (gratis.value === '0') {
+                costo_evento.removeAttribute('hidden');
+                costo.removeAttribute('disabled');
+            } else {
+                costo_evento.setAttribute('hidden', 'hidden');
+                costo.setAttribute('disabled', 'disabled');
+            }
         });
     </script>
 

@@ -106,4 +106,9 @@ class MemorandumController extends Controller
     {
         //
     }
+    public function oficios()
+    {
+        return 'vista oficios';
+    }
+
 }
