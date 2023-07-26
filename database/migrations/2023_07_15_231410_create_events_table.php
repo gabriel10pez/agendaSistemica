@@ -32,6 +32,7 @@ return new class extends Migration
             $table->date('fecha_evento')->nullable();
             $table->string('lugar_evento')->nullable();
             $table->string('resolucion_evento')->nullable();
+            $table->boolean('gratis')->nullable();
             $table->string('costo_evento')->nullable();
             $table->boolean('controlado')->nullable();
             $table->foreign(columns: 'user_id')->references(columns: 'id')->on(table: 'users');

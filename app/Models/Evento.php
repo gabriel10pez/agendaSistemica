@@ -29,6 +29,7 @@ class Evento extends Model
         'status',
         'lugar_evento',
         'resolucion_evento',
+        'gratis',
         'costo_evento',
         'controlado',
         'tipo_event_id',
